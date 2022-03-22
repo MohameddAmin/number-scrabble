@@ -1,0 +1,65 @@
+# this is number scrabble 
+# done by: Ahmed Mohamed Amin Abd El-Fattah ID: 20210323
+#----------------------------------------------------------------
+
+the_list = [1,2,3,4,5,6,7,8,9]
+p1_list = []
+p2_list = []
+empty_list = []
+
+def choosing_aNumber():                  #this function for players to choose the numbers
+    while True:
+        if the_list != empty_list:
+            print(the_list)    
+            x = int(input("player1: please enter the number from the list: "))
+            if x not in the_list:
+                while True:
+                    x = int(input("please enter the number from the list: "))
+                    if x in the_list:
+                        break                
+            p1_list.append(x)
+            the_list.remove(x)
+            if the_list == empty_list:
+                break
+
+            print(the_list)
+
+            y = int(input("player2: please enter the number from the list: "))
+            if y not in the_list:
+                while True:
+                    y = int(input("please enter the number from the list: "))
+                    if y in the_list:
+                        break
+            p2_list.append(y)
+            the_list.remove(y)
+
+
+def check_for_win():                      #this function to check for players if the sum of any three numbers equals 15 or not
+    for i in p2_list:
+        for g in range(3):
+            if p2_list[g] != i and p2_list[g+1] !=i:
+                sum = i + p2_list[g] + p2_list[g+1]
+                if sum == 15:
+                    break
+                
+    e = p1_list[0] + p1_list[2] + p1_list[4]                
+    if e == 15:
+        summ = e 
+    else:
+        for j in p1_list:
+            for n in range(4):
+                if p1_list[n] != j and p1_list[n+1] != j:
+                    summ = j + p1_list[n] + p1_list[n]
+                    if summ == 15:
+                        break
+    if sum == 15 and summ != 15:
+        print("player2 is winner")
+    elif summ == 15 and sum != 15:
+        print("player1 is winner")
+    else:
+        print("draw")
+
+choosing_aNumber()
+check_for_win()                            
+                    
+                  
